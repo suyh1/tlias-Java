@@ -1,5 +1,6 @@
 package com.study.exception;
 
+import com.study.exception.pojo.ExistStudentException;
 import com.study.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
@@ -24,5 +25,11 @@ public class GlobalExceptionHandler {
         String errMsg = message.substring(i);
         String[] arr = errMsg.split(" ");
         return Result.error(arr[2] + "已被使用，请更换");
+    }
+
+    @ExceptionHandler(ExistStudentException.class)
+    public Result handleExistStudentException(ExistStudentException e){
+        log.error("出现依赖性错误-", e);
+        return Result.error("班级下有学生, 不能直接删除");
     }
 }

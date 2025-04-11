@@ -57,4 +57,11 @@ public class EmpController {
 
     }
 
+    @GetMapping("/list")
+    public Result getAllInfo(){
+        log.info("查询所有员工信息");
+        List<Emp> allEmpList = empService.getAllInfo();
+        return Result.success(allEmpList);
+    }
+
 }
