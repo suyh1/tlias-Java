@@ -5,6 +5,8 @@ import com.study.pojo.Clazz;
 import com.study.pojo.ClazzQueryParam;
 import com.study.pojo.PageResult;
 
+import java.util.List;
+
 public interface ClazzService {
 
 
@@ -17,4 +19,6 @@ public interface ClazzService {
     void update(Clazz clazz);
 
     void deteleById(Integer id);
+
+    List<Clazz> getAllInfo();
 }
