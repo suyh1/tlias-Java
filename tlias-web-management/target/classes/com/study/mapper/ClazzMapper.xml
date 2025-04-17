@@ -41,4 +41,10 @@
         select name, room, begin_date, end_date, master_id, subject, create_time, update_time
         from clazz where id = #{id}
     </select>
+    <select id="countClazzStuData" resultType="java.util.Map">
+        select c.name clazzName,count(*) num from student s left join clazz c on s.clazz_id = c.id
+        group by c.name
+        order by num
+    </select>
+
 </mapper>

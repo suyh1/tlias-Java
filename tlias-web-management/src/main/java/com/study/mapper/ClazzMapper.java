@@ -3,10 +3,12 @@ package com.study.mapper;
 import com.study.pojo.Clazz;
 import com.study.pojo.ClazzQueryParam;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface ClazzMapper {
@@ -25,4 +27,7 @@ public interface ClazzMapper {
 
     @Select("select id, name, room, begin_date, end_date, master_id, subject, create_time, update_time from clazz")
     List<Clazz> getAll();
+
+    @MapKey("clazzName")
+    List<Map<String, Object>> countClazzStuData();
 }
